@@ -30,25 +30,25 @@ getData();
       <div class="user_Overview_nums allnum">
         <CountUp :endVal="state.totalNum" :duration="duration" />
       </div>
-      <p>总设备数</p>
+      <p>拉粑粑数</p>
     </li>
     <li class="user_Overview-item" style="color: #07f7a8">
       <div class="user_Overview_nums online">
         <CountUp :endVal="state.onlineNum" :duration="duration" />
       </div>
-      <p>在线数</p>
+      <p>吃粑粑数</p>
     </li>
     <li class="user_Overview-item" style="color: #e3b337">
       <div class="user_Overview_nums offline">
         <CountUp :endVal="state.offlineNum" :duration="duration" />
       </div>
-      <p>掉线数</p>
+      <p>闻粑粑数</p>
     </li>
     <li class="user_Overview-item" style="color: #f5023d">
       <div class="user_Overview_nums laramnum">
         <CountUp :endVal="state.alarmNum" :duration="duration" />
       </div>
-      <p>告警次数</p>
+      <p>想吃粑粑次数</p>
     </li>
   </ul>
 </template>

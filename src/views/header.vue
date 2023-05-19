@@ -29,7 +29,8 @@ timeFn()
     <div class="guang"></div>
     <div class="d-flex jc-center">
       <div class="title">
-        <span class="title-text">互联网设备可视化平台</span>
+        <span class="title-text">怡の烦心事</span>
+        <img class="title-img" src="../assets/img/yb.JPG" width="40" height="40" alt="怡宝爱吃粑粑">
       </div>
     </div>
     <div class="timers">
@@ -120,6 +121,13 @@ timeFn()
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+  .title-img{
+    position: absolute;
+    left: 49%;
+    top: 62px;
+    width: 40px;
+    height: 40px;
   }
 }
 </style>
