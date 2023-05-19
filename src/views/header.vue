@@ -30,7 +30,7 @@ timeFn()
     <div class="d-flex jc-center">
       <div class="title">
         <span class="title-text">怡の烦心事</span>
-        <img class="title-img" src="../assets/img/yb.JPG" width="40" height="40" alt="怡宝爱吃粑粑">
+        <img class="title-img" src="../assets/img/yb.png" width="40" height="40" alt="怡宝爱吃粑粑">
       </div>
     </div>
     <div class="timers">
