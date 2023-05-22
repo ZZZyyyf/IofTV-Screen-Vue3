@@ -29,8 +29,8 @@ timeFn()
     <div class="guang"></div>
     <div class="d-flex jc-center">
       <div class="title">
-        <span class="title-text">怡の烦心事</span>
-        <img class="title-img" src="../assets/img/yb.png" width="40" height="40" alt="怡宝爱吃粑粑">
+        <span class="title-text">大屏可视化平台</span>
+        <!-- <img class="title-img" src="../assets/img/yb.png" width="40" height="40" alt="怡宝爱吃粑粑"> -->
       </div>
     </div>
     <div class="timers">
