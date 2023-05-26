@@ -15,7 +15,7 @@ const { setSettingShow} =useSettingStore()
 const weekday= ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
 const timeFn = () => {
   dateData.timing = setInterval(() => {
-    dateData.dateDay = dayjs().format("YYYY-MM-DD hh : mm : ss");
+    dateData.dateDay = dayjs().format("YYYY-MM-DD HH : mm : ss");
     dateData.dateWeek = weekday[dayjs().day()];
   }, 1000);
 };
