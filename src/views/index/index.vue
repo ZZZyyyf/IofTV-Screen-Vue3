@@ -76,7 +76,7 @@ import RightBottom from './right-bottom.vue'
 }
 @keyframes left {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-1000px);
   }
   80% {
     transform: translateX(20px);
@@ -95,7 +95,7 @@ import RightBottom from './right-bottom.vue'
 }
 @keyframes slideAndFade {
   0% {
-    transform: translateY(-100%);
+    transform: translateY(-200px);
     opacity: 0;
   }
   100% {
@@ -105,7 +105,7 @@ import RightBottom from './right-bottom.vue'
 }
 @keyframes slideAndFades {
   0% {
-    transform: translateY(100%);
+    transform: translateY(200px);
     opacity: 0;
   }
   100% {
@@ -128,7 +128,7 @@ import RightBottom from './right-bottom.vue'
 
 @keyframes right {
   0% {
-    transform: translateX(100%);
+    transform: translateX(1000px);
   }
   80% {
     transform: translateX(-20px);
