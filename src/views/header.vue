@@ -23,7 +23,7 @@ timeFn()
 </script>
 
 <template>
-  <div class="d-flex jc-center title_wrap">
+  <div class="d-flex jc-center title_wrap" >
     <div class="zuojuxing"></div>
     <div class="youjuxing"></div>
     <div class="guang"></div>
@@ -44,6 +44,14 @@ timeFn()
 </template>
 
 <style scoped lang="scss">
+@keyframes fade {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
 .title_wrap {
   height: 60px;
   background-image: url("../assets/img/top.png");
@@ -51,6 +59,8 @@ timeFn()
   background-position: center center;
   position: relative;
   margin-bottom: 4px;
+  animation:fade 3s ;
+
 
   .guang {
     position: absolute;

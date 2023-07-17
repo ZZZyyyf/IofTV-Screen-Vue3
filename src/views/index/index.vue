@@ -1,21 +1,16 @@
 <script setup lang="ts">
-import ItemWrap from "@/components/item-wrap";
-import LeftTop from "./left-top.vue";
-import LeftCenter from "./left-center.vue";
-import LeftBottom from "./left-bottom.vue";
-import CenterMap from "./center-map.vue";
-import CenterBottom from "./center-bottom.vue";
-import RightTop from "./right-top.vue";
-import RightCenter from "./right-center.vue";
-import RightBottom from "./right-bottom.vue";
-
-
-
-
+import ItemWrap from '@/components/item-wrap'
+import LeftTop from './left-top.vue'
+import LeftCenter from './left-center.vue'
+import LeftBottom from './left-bottom.vue'
+import CenterMap from './center-map.vue'
+import CenterBottom from './center-bottom.vue'
+import RightTop from './right-top.vue'
+import RightCenter from './right-center.vue'
+import RightBottom from './right-bottom.vue'
 </script>
 
 <template>
-
   <div class="index-box">
     <div class="contetn_left">
       <!-- <div class="pagetab">
@@ -37,17 +32,17 @@ import RightBottom from "./right-bottom.vue";
       </ItemWrap>
     </div>
     <div class="contetn_center">
-      <CenterMap class="contetn_center_top" title="设备分布图"/>
+      <CenterMap class="contetn_center_top" title="设备分布图" />
       <ItemWrap class="contetn_center-bottom" title="安装计划">
         <CenterBottom />
       </ItemWrap>
     </div>
     <div class="contetn_right">
-      <ItemWrap class="contetn_left-bottom contetn_lr-item" title="报警次数">
+      <ItemWrap class="contetn_left-top contetn_lr-item" title="报警次数">
         <RightTop />
       </ItemWrap>
       <ItemWrap
-        class="contetn_left-bottom contetn_lr-item"
+        class="contetn_left-center contetn_lr-item"
         title="报警排名(TOP8)"
         style="padding: 0 10px 16px 10px"
       >
@@ -66,6 +61,81 @@ import RightBottom from "./right-bottom.vue";
   display: flex;
   min-height: calc(100% - 64px);
   justify-content: space-between;
+}
+
+.contetn_left {
+  .contetn_left-top {
+    animation: left 1.8s;
+  }
+  .contetn_left-center {
+    animation: left 2.3s;
+  }
+  .contetn_left-bottom {
+    animation: left 2.8s;
+  }
+}
+@keyframes left {
+  0% {
+    transform: translateX(-100%);
+  }
+  80% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.contetn_center {
+  .contetn_center_top {
+    animation: slideAndFade 1.8s;
+  }
+  .contetn_center-bottom {
+    animation: slideAndFades 2.5s;
+  }
+}
+@keyframes slideAndFade {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideAndFades {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.contetn_right {
+  .contetn_left-top {
+    animation: right 1.8s;
+  }
+  .contetn_left-center {
+    animation: right 2.3s;
+  }
+  .contetn_left-bottom {
+    animation: right 2.8s;
+  }
+}
+
+@keyframes right {
+  0% {
+    transform: translateX(100%);
+  }
+  80% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 //左边 右边 结构一样
 .contetn_left,
