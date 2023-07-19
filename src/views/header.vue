@@ -6,7 +6,7 @@ import {useSettingStore} from "@/stores/index"
 const loading=ref<Boolean>(true)
 setTimeout(() => {
   loading.value=false
-}, 1300);
+}, 1000);
 const dateData = reactive<DateDataType>({
   dateDay: "",
   dateYear: "",

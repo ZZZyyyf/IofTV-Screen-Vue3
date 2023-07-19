@@ -12,7 +12,7 @@ import { ref } from 'vue'
 const loading = ref<Boolean>(true)
 setTimeout(() => {
   loading.value = false
-}, 1300)
+}, 1000)
 </script>
 
 <template>
