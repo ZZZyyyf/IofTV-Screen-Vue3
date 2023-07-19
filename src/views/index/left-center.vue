@@ -19,12 +19,13 @@ const echartsGraphic = (colors: string[]) => {
     { offset: 1, color: colors[1] },
   ])
 }
-const vchart = ref<any>();
+const vchart = ref<any>()
 onMounted(() => {
   setTimeout(() => {
-   showSlide(vchart.value.chart,option.value)
-  }, 1000);
-
+    if (vchart.value && option.value) {
+      showSlide(vchart.value.chart, option.value)
+    }
+  }, 1000)
 })
 const getData = () => {
   currentGET('leftCenter').then((res) => {

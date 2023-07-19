@@ -2,6 +2,7 @@
 import { ref, reactive, onMounted, nextTick } from "vue";
 import { currentGET } from "@/api";
 import {graphic} from "echarts/core"
+import { showSlide } from '@/utils/slideshow'
 const option = ref({});
 const getData = () => {
   currentGET("centerBottom", {}).then((res) => {
@@ -149,14 +150,19 @@ const setOption =async (newData: any) => {
     ],
   };
 };
+const centerBottomRef = ref<any>()
 onMounted(()=>{
 getData();
-
+setTimeout(() => {
+    if (centerBottomRef.value && option.value) {
+      showSlide(centerBottomRef.value.chart, option.value)
+    }
+  }, 1400)
 })
 </script>
 
 <template>
-  <v-chart class="chart" :option="option" v-if="JSON.stringify(option)!='{}'"/>
+  <v-chart class="chart" ref="centerBottomRef" :option="option" v-if="JSON.stringify(option)!='{}'"/>
 </template>
 
 <style scoped lang="scss"></style>

@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { ref, reactive, nextTick } from "vue";
+import { ref, reactive, nextTick,onMounted } from "vue";
 import { currentGET, GETNOBASE } from "@/api";
 import { registerMap, getMap } from "echarts/core";
 import { optionHandle, regionCodes } from "./center.map";
 import type { MapdataType } from "./center.map";
+import { showSlide } from '@/utils/slideshow'
+
 const option = ref({});
 const code = ref("china"); //china 代表中国 其他地市是行政编码
 
@@ -16,6 +18,14 @@ withDefaults(
     title: "地图",
   }
 );
+const centerMapRef = ref<any>()
+onMounted(() => {
+  setTimeout(() => {
+    if (centerMapRef.value && option.value) {
+      showSlide(centerMapRef.value.chart, option.value)
+    }
+  }, 1800)
+})
 
 const dataSetHandle = async (regionCode: string, list: object[]) => {
   const geojson: any = await getGeojson(regionCode);

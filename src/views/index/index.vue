@@ -8,10 +8,26 @@ import CenterBottom from './center-bottom.vue'
 import RightTop from './right-top.vue'
 import RightCenter from './right-center.vue'
 import RightBottom from './right-bottom.vue'
+import { ref } from 'vue'
+const loading = ref<Boolean>(true)
+setTimeout(() => {
+  loading.value = false
+}, 1300)
 </script>
 
 <template>
-  <div class="index-box">
+  <div v-if="loading" class="first-loading-wrp">
+    <div class="loading-wrp">
+      <span class="dot dot-spin">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
+    </div>
+    <h1>正在加载数据...</h1>
+  </div>
+  <div v-else class="index-box">
     <div class="contetn_left">
       <!-- <div class="pagetab">
         <div class="item">实时监测</div>
@@ -56,6 +72,103 @@ import RightBottom from './right-bottom.vue'
 </template>
 
 <style scoped lang="scss">
+.first-loading-wrp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  min-height: 90vh;
+}
+
+.first-loading-wrp > h1 {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.first-loading-wrp .loading-wrp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 58px;
+}
+
+.dot {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  font-size: 64px;
+  transform: rotate(45deg);
+  animation: antRotate 1.2s infinite linear;
+}
+
+.dot i {
+  position: absolute;
+  display: block;
+  width: 28px;
+  height: 28px;
+  // background-color: #1890ff;
+  background-image: linear-gradient(to right, #256ccf 0%, #2d4ed0  51%, #1f79ff  100%);
+  border-radius: 100%;
+  opacity: 0.3;
+  transform: scale(0.75);
+  transform-origin: 50% 50%;
+  animation: antSpinMove 1s infinite linear alternate;
+}
+
+.dot i:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+
+.dot i:nth-child(2) {
+  top: 0;
+  right: 0;
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.dot i:nth-child(3) {
+  right: 0;
+  bottom: 0;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.dot i:nth-child(4) {
+  bottom: 0;
+  left: 0;
+  -webkit-animation-delay: 1.2s;
+  animation-delay: 1.2s;
+}
+
+@keyframes antRotate {
+  to {
+    -webkit-transform: rotate(405deg);
+    transform: rotate(405deg);
+  }
+}
+
+@-webkit-keyframes antRotate {
+  to {
+    -webkit-transform: rotate(405deg);
+    transform: rotate(405deg);
+  }
+}
+
+@keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}
 .index-box {
   width: 100%;
   display: flex;

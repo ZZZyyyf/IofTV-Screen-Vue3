@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { currentGET } from "@/api";
-import SeamlessScroll from "@/components/seamless-scroll";
-import { computed, onMounted, reactive } from "vue";
-import { useSettingStore } from "@/stores";
-import { storeToRefs } from "pinia";
-import EmptyCom from "@/components/empty-com"
-const settingStore = useSettingStore();
-const { defaultOption,indexConfig } = storeToRefs(settingStore);
+import { currentGET } from '@/api'
+import SeamlessScroll from '@/components/seamless-scroll'
+import { computed, onMounted, reactive } from 'vue'
+import { useSettingStore } from '@/stores'
+import { storeToRefs } from 'pinia'
+import EmptyCom from '@/components/empty-com'
+const settingStore = useSettingStore()
+const { defaultOption, indexConfig } = storeToRefs(settingStore)
 const state = reactive<any>({
   list: [],
   defaultOption: {
@@ -15,47 +15,50 @@ const state = reactive<any>({
     limitScrollNum: 4,
   },
   scroll: true,
-});
+})
 
 const getData = () => {
-  currentGET("leftBottom", { limitNum: 20 }).then((res) => {
-    console.log("设备提醒", res);
+  currentGET('leftBottom', { limitNum: 20 }).then((res) => {
+    console.log('设备提醒', res)
     if (res.success) {
-      state.list = res.data.list;
+      state.list = res.data.list
     } else {
       window.$message({
         text: res.msg,
-        type: "warning",
-      });
+        type: 'warning',
+      })
     }
-  });
-};
+  })
+}
 const addressHandle = (item: any) => {
-  let name = item.provinceName;
+  let name = item.provinceName
   if (item.cityName) {
-    name += "/" + item.cityName;
+    name += '/' + item.cityName
     if (item.countyName) {
-      name += "/" + item.countyName;
+      name += '/' + item.countyName
     }
   }
-  return name;
-};
-const comName = computed(()=>{
-    if(indexConfig.value.leftBottomSwiper){
-        return SeamlessScroll
-    }else{
-        return EmptyCom
-    }
+  return name
+}
+const comName = computed(() => {
+  if (indexConfig.value.leftBottomSwiper) {
+    return SeamlessScroll
+  } else {
+    return EmptyCom
+  }
 })
 onMounted(() => {
-  getData();
-});
+  getData()
+})
 </script>
 
 <template>
-  <div class="left_boottom_wrap beautify-scroll-def"  :class="{ 'overflow-y-auto': !indexConfig.leftBottomSwiper }">
+  <div
+    class="left_boottom_wrap beautify-scroll-def"
+    :class="{ 'overflow-y-auto': !indexConfig.leftBottomSwiper }"
+  >
     <component
-     :is="comName"
+      :is="comName"
       :list="state.list"
       v-model="state.scroll"
       :singleHeight="state.defaultOption.singleHeight"
@@ -91,8 +94,15 @@ onMounted(() => {
                 typeRed: item.onlineState == 0,
                 typeGreen: item.onlineState == 1,
               }"
-              >{{ item.onlineState == 1 ? "上线" : "下线" }}</span
-            >
+              ><i
+                class="status"
+                :class="{
+                  bgRed: item.onlineState == 0,
+                  bgGreen: item.onlineState == 1,
+                }"
+              ></i
+              >{{ item.onlineState == 1 ? '上线' : '下线' }}
+            </span>
 
             <div class="info addresswrap">
               <span class="labels">地址：</span>
@@ -179,7 +189,7 @@ onMounted(() => {
         position: absolute;
         height: 2px;
         width: 104%;
-        background-image: url("@/assets/img/zuo_xuxian.png");
+        background-image: url('@/assets/img/zuo_xuxian.png');
         bottom: -10px;
         left: -2%;
         background-size: cover;
@@ -210,9 +220,47 @@ onMounted(() => {
       cursor: pointer;
       // @include text-overflow(1);
     }
+    .status {
+      position: relative;
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin: 0 4px;
+      border-radius: 50%;
+    }
+    .status:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      // display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: inherit;
+      animation: statusFade 1.5s ease-in-out infinite;
+    }
+    @keyframes statusFade {
+      0% {
+        opacity: 0.8;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(2.8);
+      }
+    }
+    .bgRed {
+      background-color: #fc1a1a;
+    }
+
+    .bgGreen {
+      background-color: #29fc29;
+    }
 
     .types {
-      width: 30px;
+      width: 44px;
+      line-height: 1.5;
       flex-shrink: 0;
     }
 

@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import {ref, reactive } from "vue";
 import dayjs from 'dayjs';
 import type {DateDataType} from "./index.d"
 import {useSettingStore} from "@/stores/index"
-
+const loading=ref<Boolean>(true)
+setTimeout(() => {
+  loading.value=false
+}, 1300);
 const dateData = reactive<DateDataType>({
   dateDay: "",
   dateYear: "",
@@ -23,14 +26,13 @@ timeFn()
 </script>
 
 <template>
-  <div class="d-flex jc-center title_wrap" >
+  <div v-if="!loading" class="d-flex jc-center title_wrap" >
     <div class="zuojuxing"></div>
     <div class="youjuxing"></div>
     <div class="guang"></div>
     <div class="d-flex jc-center">
       <div class="title">
         <span class="title-text">大屏可视化平台</span>
-        <!-- <img class="title-img" src="../assets/img/yb.png" width="40" height="40" alt="怡宝爱吃粑粑"> -->
       </div>
     </div>
     <div class="timers">

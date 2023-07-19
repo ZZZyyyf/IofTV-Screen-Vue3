@@ -7,8 +7,10 @@ const option = ref({})
 const vcharts = ref<any>()
 onMounted(() => {
   setTimeout(() => {
-    showSlide(vcharts.value.chart, option.value)
-  }, 1000)
+    if (vcharts.value && option.value) {
+      showSlide(vcharts.value.chart, option.value)
+    }
+  }, 1200)
 })
 const getData = () => {
   currentGET('rightTop', {}).then((res) => {
